@@ -3,95 +3,106 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { SITE_CONFIG } from '@/lib/constants';
+import AnimatedSection from '@/components/react/AnimatedSection';
 ---
 
 <PageLayout title={`About — ${SITE_CONFIG.name}`} description="Learn about April Garnica — filmmaker, photographer, and visual artist from Tijuana, Mexico.">
   <section class="py-20">
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto space-y-12">
-        <div class="text-center space-y-4">
-          <h1 class="text-4xl md:text-5xl font-bold">About</h1>
-          <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
-            Filmmaker &middot; Director of Photography &middot; Visual Artist
-          </p>
-        </div>
+        <AnimatedSection variant="fadeUp" client:visible>
+          <div class="text-center space-y-4">
+            <h1 class="text-4xl md:text-5xl font-bold">About</h1>
+            <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+              Filmmaker &middot; Director of Photography &middot; Visual Artist
+            </p>
+          </div>
+        </AnimatedSection>
 
         <!-- Bio -->
-        <div class="space-y-6 text-muted-foreground leading-relaxed" style="font-family: 'Inter', sans-serif;">
-          <p>
-            April Garnica is a filmmaker and visual artist originally from Tijuana, Mexico.
-            Currently studying film at the University of California, Santa Cruz, she brings
-            a unique cross-border perspective to her work — one shaped by growing up between
-            two cultures, two languages, and two nations.
-          </p>
-          <p>
-            April completed her Associate's degree for transfer in Film, Television, and
-            Media Arts (FTMA) at Southwestern College before transferring to UC Santa Cruz.
-            Her interests span narrative filmmaking, documentary, photography, stop motion
-            animation, and visual art.
-          </p>
-          <p>
-            As a Director of Photography, April is drawn to stories that explore identity,
-            belonging, and the spaces between. Her latest film, <em>Fronterizos</em>,
-            examines the complexities of border life through a deeply personal lens.
-          </p>
-        </div>
+        <AnimatedSection variant="fadeUp" delay={0.1} client:visible>
+          <div class="space-y-6 text-muted-foreground leading-relaxed" style="font-family: 'Inter', sans-serif;">
+            <p>
+              April Garnica is a filmmaker and visual artist originally from Tijuana, Mexico.
+              Currently studying film at the University of California, Santa Cruz, she brings
+              a unique cross-border perspective to her work — one shaped by growing up between
+              two cultures, two languages, and two nations.
+            </p>
+            <p>
+              April completed her Associate's degree for transfer in Film, Television, and
+              Media Arts (FTMA) at Southwestern College before transferring to UC Santa Cruz.
+              Her interests span narrative filmmaking, documentary, photography, stop motion
+              animation, and visual art.
+            </p>
+            <p>
+              As a Director of Photography, April is drawn to stories that explore identity,
+              belonging, and the spaces between. Her latest film, <em>Fronterizos</em>,
+              examines the complexities of border life through a deeply personal lens.
+            </p>
+          </div>
+        </AnimatedSection>
 
         <!-- Education -->
-        <Card>
-          <CardContent className="pt-6 space-y-6">
-            <h2 class="text-2xl font-bold">Education</h2>
-            <div class="space-y-4">
-              <div class="flex gap-4">
-                <div class="w-2 bg-primary rounded-full shrink-0"></div>
-                <div>
-                  <h3 class="font-semibold">University of California, Santa Cruz</h3>
-                  <p class="text-sm text-muted-foreground">Film &amp; Digital Media — Currently enrolled</p>
+        <AnimatedSection variant="fadeUp" delay={0.2} client:visible>
+          <Card>
+            <CardContent className="pt-6 space-y-6">
+              <h2 class="text-2xl font-bold">Education</h2>
+              <div class="space-y-4">
+                <div class="flex gap-4">
+                  <div class="w-2 bg-primary rounded-full shrink-0"></div>
+                  <div>
+                    <h3 class="font-semibold">University of California, Santa Cruz</h3>
+                    <p class="text-sm text-muted-foreground">Film &amp; Digital Media — Currently enrolled</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <div class="w-2 bg-accent rounded-full shrink-0"></div>
+                  <div>
+                    <h3 class="font-semibold">Southwestern College</h3>
+                    <p class="text-sm text-muted-foreground">Associate's Degree for Transfer — Film, Television, and Media Arts (FTMA)</p>
+                  </div>
                 </div>
               </div>
-              <div class="flex gap-4">
-                <div class="w-2 bg-accent rounded-full shrink-0"></div>
-                <div>
-                  <h3 class="font-semibold">Southwestern College</h3>
-                  <p class="text-sm text-muted-foreground">Associate's Degree for Transfer — Film, Television, and Media Arts (FTMA)</p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </AnimatedSection>
 
         <!-- Skills -->
-        <Card>
-          <CardContent className="pt-6 space-y-6">
-            <h2 class="text-2xl font-bold">Skills & Disciplines</h2>
-            <div class="grid sm:grid-cols-2 gap-4 text-sm" style="font-family: 'Inter', sans-serif;">
-              <div>
-                <h3 class="font-semibold mb-2 text-primary">Film & Video</h3>
-                <ul class="space-y-1 text-muted-foreground">
-                  <li>Director of Photography</li>
-                  <li>Narrative & Documentary Filmmaking</li>
-                  <li>Cinematography</li>
-                  <li>Video Editing</li>
-                </ul>
+        <AnimatedSection variant="fadeUp" delay={0.3} client:visible>
+          <Card>
+            <CardContent className="pt-6 space-y-6">
+              <h2 class="text-2xl font-bold">Skills & Disciplines</h2>
+              <div class="grid sm:grid-cols-2 gap-4 text-sm" style="font-family: 'Inter', sans-serif;">
+                <div>
+                  <h3 class="font-semibold mb-2 text-primary">Film & Video</h3>
+                  <ul class="space-y-1 text-muted-foreground">
+                    <li>Director of Photography</li>
+                    <li>Narrative & Documentary Filmmaking</li>
+                    <li>Cinematography</li>
+                    <li>Video Editing</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="font-semibold mb-2 text-primary">Visual Arts</h3>
+                  <ul class="space-y-1 text-muted-foreground">
+                    <li>Photography</li>
+                    <li>Stop Motion Animation</li>
+                    <li>Mixed Media Art</li>
+                    <li>Illustration</li>
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h3 class="font-semibold mb-2 text-primary">Visual Arts</h3>
-                <ul class="space-y-1 text-muted-foreground">
-                  <li>Photography</li>
-                  <li>Stop Motion Animation</li>
-                  <li>Mixed Media Art</li>
-                  <li>Illustration</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </AnimatedSection>
 
-        <div class="text-center">
-          <Button>
-            <a href="/contact">Get in Touch</a>
-          </Button>
-        </div>
+        <AnimatedSection variant="fadeUp" delay={0.4} client:visible>
+          <div class="text-center">
+            <Button>
+              <a href="/contact">Get in Touch</a>
+            </Button>
+          </div>
+        </AnimatedSection>
       </div>
     </div>
   </section>

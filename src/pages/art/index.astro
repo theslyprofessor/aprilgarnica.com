@@ -2,31 +2,38 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import { Palette } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
+import AnimatedSection, { AnimatedItem } from '@/components/react/AnimatedSection';
 ---
 
 <PageLayout title={`Art — ${SITE_CONFIG.name}`} description="Visual art portfolio of April Garnica — mixed media, illustration, and more.">
   <section class="py-20">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto space-y-12">
-        <div class="text-center space-y-4">
-          <h1 class="text-4xl md:text-5xl font-bold">Art</h1>
-          <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
-            Mixed media, illustration, and visual art
-          </p>
-        </div>
+        <AnimatedSection variant="fadeUp" client:visible>
+          <div class="text-center space-y-4">
+            <h1 class="text-4xl md:text-5xl font-bold">Art</h1>
+            <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+              Mixed media, illustration, and visual art
+            </p>
+          </div>
+        </AnimatedSection>
 
         <!-- Art grid placeholder -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <AnimatedSection stagger staggerDelay={0.08} className="grid grid-cols-2 md:grid-cols-3 gap-4" client:visible>
           {Array.from({ length: 6 }).map((_, i) => (
-            <div class="aspect-square bg-card rounded-lg flex items-center justify-center border border-border/50 hover:border-accent/30 transition-colors">
-              <Palette className="h-10 w-10 text-muted-foreground/30" />
-            </div>
+            <AnimatedItem variant="scale">
+              <div class="aspect-square bg-card rounded-lg flex items-center justify-center border border-border/50 hover:border-[hsl(var(--creative-violet))]/30 transition-colors">
+                <Palette className="h-10 w-10 text-muted-foreground/30" />
+              </div>
+            </AnimatedItem>
           ))}
-        </div>
+        </AnimatedSection>
 
-        <p class="text-center text-muted-foreground" style="font-family: 'Inter', sans-serif;">
-          Art portfolio coming soon. Replace placeholders with April's artwork.
-        </p>
+        <AnimatedSection variant="fadeUp" client:visible>
+          <p class="text-center text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+            Art portfolio coming soon. Replace placeholders with April's artwork.
+          </p>
+        </AnimatedSection>
       </div>
     </div>
   </section>

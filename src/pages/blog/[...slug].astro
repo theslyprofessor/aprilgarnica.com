@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
 import { Button } from '@/components/ui/button';
 import { SITE_CONFIG } from '@/lib/constants';
+import AnimatedSection from '@/components/react/AnimatedSection';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -25,38 +26,42 @@ const { Content } = await render(post);
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto">
         <!-- Header -->
-        <header class="mb-12 space-y-4">
-          <div class="flex items-center gap-3 text-sm text-muted-foreground" style="font-family: 'Inter', sans-serif;">
-            <time datetime={post.data.publishDate.toISOString()}>
-              {post.data.publishDate.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
-            {post.data.tags.length > 0 && (
-              <>
-                <span>&middot;</span>
-                <div class="flex gap-2">
-                  {post.data.tags.map((tag) => (
-                    <span class="text-xs border border-primary/30 text-primary px-2 py-0.5 rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-          <h1 class="text-4xl md:text-5xl font-bold">{post.data.title}</h1>
-          <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
-            {post.data.description}
-          </p>
-        </header>
+        <AnimatedSection variant="fadeUp" client:visible>
+          <header class="mb-12 space-y-4">
+            <div class="flex items-center gap-3 text-sm text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+              <time datetime={post.data.publishDate.toISOString()}>
+                {post.data.publishDate.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+              {post.data.tags.length > 0 && (
+                <>
+                  <span>&middot;</span>
+                  <div class="flex gap-2">
+                    {post.data.tags.map((tag) => (
+                      <span class="text-xs border border-primary/30 text-primary px-2 py-0.5 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold">{post.data.title}</h1>
+            <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+              {post.data.description}
+            </p>
+          </header>
+        </AnimatedSection>
 
         <!-- Content -->
-        <div class="prose prose-invert prose-lg max-w-none" style="font-family: 'Inter', sans-serif;">
-          <Content />
-        </div>
+        <AnimatedSection variant="fadeUp" delay={0.1} client:visible>
+          <div class="prose prose-lg max-w-none" style="font-family: 'Inter', sans-serif;">
+            <Content />
+          </div>
+        </AnimatedSection>
 
         <!-- Back link -->
         <div class="mt-12 pt-8 border-t border-border/40">

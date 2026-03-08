@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { getAllFilms } from '@/data/films';
 import { SITE_CONFIG } from '@/lib/constants';
+import AnimatedSection, { AnimatedItem } from '@/components/react/AnimatedSection';
+import AnimatedCard from '@/components/react/AnimatedCard';
 
 const films = await getAllFilms();
 ---
@@ -12,58 +14,68 @@ const films = await getAllFilms();
   <section class="py-20">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto space-y-12">
-        <div class="text-center space-y-4">
-          <h1 class="text-4xl md:text-5xl font-bold">Film</h1>
-          <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
-            Director of Photography &middot; Narrative &middot; Documentary
-          </p>
-        </div>
+        <AnimatedSection variant="fadeUp" client:visible>
+          <div class="text-center space-y-4">
+            <h1 class="text-4xl md:text-5xl font-bold">Film</h1>
+            <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+              Director of Photography &middot; Narrative &middot; Documentary
+            </p>
+          </div>
+        </AnimatedSection>
 
         <!-- DP Reel placeholder -->
-        <div class="max-w-4xl mx-auto">
-          <div class="cinema-ratio bg-card rounded-lg flex items-center justify-center border border-border/50">
-            <div class="text-center space-y-3">
-              <p class="text-2xl font-bold text-muted-foreground/50">DP Reel</p>
-              <p class="text-sm text-muted-foreground">Vimeo embed coming soon</p>
+        <AnimatedSection variant="fadeIn" client:visible>
+          <div class="max-w-4xl mx-auto">
+            <div class="cinema-ratio bg-card rounded-lg flex items-center justify-center border border-border/50">
+              <div class="text-center space-y-3">
+                <p class="text-2xl font-bold text-muted-foreground/50">DP Reel</p>
+                <p class="text-sm text-muted-foreground">Vimeo embed coming soon</p>
+              </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
 
         <!-- Film Projects -->
         <div>
-          <h2 class="text-2xl font-bold mb-8">Projects</h2>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <AnimatedSection variant="fadeUp" client:visible>
+            <h2 class="text-2xl font-bold mb-8">Projects</h2>
+          </AnimatedSection>
+          <AnimatedSection stagger staggerDelay={0.1} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" client:visible>
             {films.map((film) => (
-              <a href={`/film/${film.id}`} class="group">
-                <Card className="h-full hover:border-primary/50 transition-all duration-300 overflow-hidden">
-                  <div class="cinema-ratio bg-gradient-to-br from-primary/10 to-accent/5 flex items-center justify-center">
-                    <p class="text-4xl font-bold text-muted-foreground/20">{film.data.title[0]}</p>
-                  </div>
-                  <CardHeader>
-                    <div class="flex items-center justify-between">
-                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                        {film.data.title}
-                      </CardTitle>
-                      <span class="text-sm text-muted-foreground">{film.data.year}</span>
-                    </div>
-                    <CardDescription>{film.data.role}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p class="text-sm text-muted-foreground line-clamp-2">{film.data.logline}</p>
-                    {film.data.festivals.length > 0 && (
-                      <div class="flex flex-wrap gap-1 mt-3">
-                        {film.data.festivals.map((f) => (
-                          <span class="text-xs text-laurel border border-[hsl(var(--laurel-gold))]/30 px-2 py-0.5 rounded-full">
-                            {f.name}
-                          </span>
-                        ))}
+              <AnimatedItem variant="scale">
+                <a href={`/film/${film.id}`} class="group block">
+                  <AnimatedCard client:visible>
+                    <Card className="h-full hover:border-primary/50 transition-all duration-300 overflow-hidden">
+                      <div class="cinema-ratio bg-gradient-to-br from-primary/10 to-accent/5 flex items-center justify-center">
+                        <p class="text-4xl font-bold text-muted-foreground/20">{film.data.title[0]}</p>
                       </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </a>
+                      <CardHeader>
+                        <div class="flex items-center justify-between">
+                          <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                            {film.data.title}
+                          </CardTitle>
+                          <span class="text-sm text-muted-foreground">{film.data.year}</span>
+                        </div>
+                        <CardDescription>{film.data.role}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p class="text-sm text-muted-foreground line-clamp-2">{film.data.logline}</p>
+                        {film.data.festivals.length > 0 && (
+                          <div class="flex flex-wrap gap-1 mt-3">
+                            {film.data.festivals.map((f) => (
+                              <span class="text-xs text-laurel border border-[hsl(var(--laurel-gold))]/30 px-2 py-0.5 rounded-full">
+                                {f.name}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </AnimatedCard>
+                </a>
+              </AnimatedItem>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
       </div>
     </div>
