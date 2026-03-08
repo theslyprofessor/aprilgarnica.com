@@ -19,10 +19,10 @@ import AnimatedCard from '@/components/react/AnimatedCard';
     <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(var(--creative-violet)/0.15)] blur-[100px]"></div>
 
     <!-- Hero content -->
-    <div class="relative z-10 container mx-auto px-4 text-center py-20">
-      <AnimatedSection stagger staggerDelay={0.15} className="space-y-8" client:visible>
+    <div class="relative z-10 container mx-auto px-4 text-center py-32">
+      <AnimatedSection stagger staggerDelay={0.15} className="space-y-6" client:visible>
         <AnimatedItem variant="fadeUp">
-          <div class="inline-block">
+          <div class="inline-block mb-4">
             <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               <Film className="h-4 w-4" />
               New Film: Fronterizos
@@ -31,26 +31,26 @@ import AnimatedCard from '@/components/react/AnimatedCard';
         </AnimatedItem>
 
         <AnimatedItem variant="fadeUp">
-          <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9]">
+          <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] mb-6">
             April Garnica
           </h1>
         </AnimatedItem>
 
         <AnimatedItem variant="fadeUp">
-          <p class="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light" style="font-family: 'Inter', sans-serif;">
+          <p class="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light mt-4" style="font-family: 'Inter', sans-serif;">
             Filmmaker &middot; Director of Photography &middot; Visual Artist
           </p>
         </AnimatedItem>
 
         <AnimatedItem variant="fadeUp">
-          <p class="text-base text-muted-foreground/70 max-w-xl mx-auto" style="font-family: 'Inter', sans-serif;">
+          <p class="text-base text-muted-foreground/70 max-w-xl mx-auto mt-2" style="font-family: 'Inter', sans-serif;">
             From Tijuana. Studying film at UC Santa Cruz.<br />
             Telling stories that bridge borders and perspectives.
           </p>
         </AnimatedItem>
 
         <AnimatedItem variant="fadeUp">
-          <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
             <Button size="lg" className="text-lg">
               <a href="/film">View My Work</a>
             </Button>
