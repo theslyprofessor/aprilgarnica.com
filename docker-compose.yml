@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    ports:
+      - "4326:4326"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=4326
+      - DATABASE_URL=${DATABASE_URL}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - TRACKER_PASSWORD=${TRACKER_PASSWORD}
+    restart: unless-stopped

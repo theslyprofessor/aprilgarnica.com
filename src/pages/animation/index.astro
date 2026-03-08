@@ -1,0 +1,43 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Film } from 'lucide-react';
+import { SITE_CONFIG } from '@/lib/constants';
+---
+
+<PageLayout title={`Animation — ${SITE_CONFIG.name}`} description="Stop motion animation and experimental animation work by April Garnica.">
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div class="text-center space-y-4">
+          <h1 class="text-4xl md:text-5xl font-bold">Animation</h1>
+          <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+            Stop motion and experimental animation
+          </p>
+        </div>
+
+        <!-- Featured: UCSC Stop Motion Piece -->
+        <Card className="overflow-hidden border-primary/20">
+          <div class="cinema-ratio bg-card flex items-center justify-center border-b border-border/50">
+            <div class="text-center space-y-3">
+              <Film className="h-12 w-12 mx-auto text-muted-foreground/30" />
+              <p class="text-sm text-muted-foreground">Vimeo embed coming soon</p>
+            </div>
+          </div>
+          <CardHeader>
+            <CardTitle>UC Santa Cruz Stop Motion Project</CardTitle>
+            <CardDescription>
+              Collaborative stop motion animation created with fellow students at UC Santa Cruz.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p class="text-sm text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+              Details about the stop motion animation project, process, and creative approach coming soon.
+              Replace this placeholder with the actual project information and Vimeo embed.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </section>
+</PageLayout>

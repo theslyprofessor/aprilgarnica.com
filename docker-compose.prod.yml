@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    container_name: aprilgarnica-web
+    restart: unless-stopped
+    environment:
+      - HOST=0.0.0.0
+      - PORT=4326
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.aprilgarnica.rule=Host(`aprilgarnica.com`)"
+      - "traefik.http.routers.aprilgarnica.tls=true"
+      - "traefik.http.routers.aprilgarnica.tls.certresolver=letsencrypt"
+      - "traefik.http.services.aprilgarnica.loadbalancer.server.port=4326"
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true

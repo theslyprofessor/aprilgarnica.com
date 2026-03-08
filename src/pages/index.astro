@@ -1,0 +1,185 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Film, Camera, Clapperboard, Palette } from 'lucide-react';
+---
+
+<PageLayout title="April Garnica — Filmmaker & Visual Artist">
+  <!-- Hero Section — Cinematic full-viewport -->
+  <section class="relative flex min-h-screen items-center justify-center overflow-hidden film-grain">
+    <!-- Dark gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background"></div>
+    <div class="absolute inset-0 vignette"></div>
+
+    <!-- Hero content -->
+    <div class="relative z-10 container mx-auto px-4 text-center space-y-8 py-20">
+      <div class="inline-block">
+        <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+          <Film className="h-4 w-4" />
+          New Film: Fronterizos
+        </span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9]">
+        April Garnica
+      </h1>
+
+      <p class="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light" style="font-family: 'Inter', sans-serif;">
+        Filmmaker &middot; Director of Photography &middot; Visual Artist
+      </p>
+
+      <p class="text-base text-muted-foreground/70 max-w-xl mx-auto" style="font-family: 'Inter', sans-serif;">
+        From Tijuana. Studying film at UC Santa Cruz.<br />
+        Telling stories that bridge borders and perspectives.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+        <Button size="lg" className="text-lg">
+          <a href="/film">View My Work</a>
+        </Button>
+        <Button size="lg" variant="outline" className="text-lg">
+          <a href="/film/fronterizos">Fronterizos</a>
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discipline Grid -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+          Creative Work
+        </h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a href="/film" class="group">
+            <Card className="h-full hover:border-primary/50 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
+              <CardHeader className="text-center">
+                <Clapperboard className="h-10 w-10 mx-auto text-primary mb-2" />
+                <CardTitle className="text-lg">Film</CardTitle>
+                <CardDescription>Director of Photography, narrative & documentary</CardDescription>
+              </CardHeader>
+            </Card>
+          </a>
+
+          <a href="/photography" class="group">
+            <Card className="h-full hover:border-primary/50 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
+              <CardHeader className="text-center">
+                <Camera className="h-10 w-10 mx-auto text-accent mb-2" />
+                <CardTitle className="text-lg">Photography</CardTitle>
+                <CardDescription>Portraits, events, and visual storytelling</CardDescription>
+              </CardHeader>
+            </Card>
+          </a>
+
+          <a href="/animation" class="group">
+            <Card className="h-full hover:border-primary/50 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
+              <CardHeader className="text-center">
+                <Film className="h-10 w-10 mx-auto text-primary mb-2" />
+                <CardTitle className="text-lg">Animation</CardTitle>
+                <CardDescription>Stop motion and experimental animation</CardDescription>
+              </CardHeader>
+            </Card>
+          </a>
+
+          <a href="/art" class="group">
+            <Card className="h-full hover:border-primary/50 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
+              <CardHeader className="text-center">
+                <Palette className="h-10 w-10 mx-auto text-accent mb-2" />
+                <CardTitle className="text-lg">Art</CardTitle>
+                <CardDescription>Mixed media, illustration, and visual art</CardDescription>
+              </CardHeader>
+            </Card>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Film: Fronterizos -->
+  <section class="py-20 bg-card/50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <Card className="overflow-hidden border-primary/20">
+          <div class="grid md:grid-cols-2 gap-0">
+            <!-- Poster placeholder -->
+            <div class="aspect-[2/3] md:aspect-auto bg-gradient-to-br from-primary/20 via-background to-accent/10 flex items-center justify-center min-h-[300px]">
+              <div class="text-center space-y-3 p-6">
+                <Clapperboard className="h-16 w-16 mx-auto text-primary/60" />
+                <p class="text-sm text-muted-foreground italic">Film poster coming soon</p>
+              </div>
+            </div>
+
+            <!-- Film info -->
+            <div class="p-8 space-y-6">
+              <div>
+                <p class="text-sm font-medium text-primary uppercase tracking-widest mb-2">Featured Film</p>
+                <h3 class="text-3xl font-bold">Fronterizos</h3>
+                <p class="text-muted-foreground mt-1" style="font-family: 'Inter', sans-serif;">
+                  Director of Photography
+                </p>
+              </div>
+
+              <p class="text-muted-foreground leading-relaxed" style="font-family: 'Inter', sans-serif;">
+                A border story exploring identity and belonging between two worlds.
+                Born from the lived experience of growing up between Tijuana and the United States.
+              </p>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs border border-primary/30 text-primary px-3 py-1 rounded-full">Short Film</span>
+                <span class="text-xs border border-primary/30 text-primary px-3 py-1 rounded-full">2025</span>
+                <span class="text-xs border border-primary/30 text-primary px-3 py-1 rounded-full">Director of Photography</span>
+              </div>
+
+              <Button className="w-full sm:w-auto">
+                <a href="/film/fronterizos">Learn More</a>
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center space-y-6">
+        <h2 class="text-3xl md:text-4xl font-bold">About</h2>
+        <p class="text-lg text-muted-foreground leading-relaxed" style="font-family: 'Inter', sans-serif;">
+          Originally from Tijuana, Mexico, April Garnica is a filmmaker and visual artist
+          studying film at the University of California, Santa Cruz. With an associate's degree
+          in Film, Television, and Media Arts from Southwestern College, she brings a
+          cross-border perspective to every frame.
+        </p>
+        <Button variant="outline">
+          <a href="/about">Read Full Bio</a>
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-20 bg-card/50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center space-y-6">
+        <h2 class="text-3xl md:text-4xl font-bold">Let's Collaborate</h2>
+        <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+          Available for film projects, photography, and creative collaborations
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg">
+            <a href="/contact">Get in Touch</a>
+          </Button>
+          <Button size="lg" variant="outline">
+            <a href="https://instagram.com/aprilgarnica" target="_blank" rel="noopener noreferrer">
+              Follow on Instagram
+            </a>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

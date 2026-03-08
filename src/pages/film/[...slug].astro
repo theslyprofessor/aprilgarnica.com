@@ -1,0 +1,110 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { SITE_CONFIG } from '@/lib/constants';
+
+export async function getStaticPaths() {
+  const films = await getCollection('films');
+  return films.map((film) => ({
+    params: { slug: film.id },
+    props: { film },
+  }));
+}
+
+type Props = { film: CollectionEntry<'films'> };
+const { film } = Astro.props;
+const { Content } = await render(film);
+---
+
+<PageLayout
+  title={`${film.data.title} — ${SITE_CONFIG.name}`}
+  description={film.data.logline}
+>
+  <article class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <!-- Film Header -->
+        <header class="text-center space-y-6">
+          <p class="text-sm font-medium text-primary uppercase tracking-widest">
+            {film.data.role} &middot; {film.data.year}
+          </p>
+          <h1 class="text-5xl md:text-7xl font-bold">{film.data.title}</h1>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto italic" style="font-family: 'Inter', sans-serif;">
+            {film.data.logline}
+          </p>
+          {film.data.runtime && (
+            <p class="text-sm text-muted-foreground">{film.data.runtime}</p>
+          )}
+        </header>
+
+        <!-- Trailer placeholder -->
+        {film.data.trailerVimeoId && (
+          <div class="cinema-ratio bg-card rounded-lg flex items-center justify-center border border-border/50">
+            <p class="text-muted-foreground">Trailer embed: {film.data.trailerVimeoId}</p>
+          </div>
+        )}
+
+        <!-- Festival Laurels -->
+        {film.data.festivals.length > 0 && (
+          <div class="flex flex-wrap justify-center gap-4">
+            {film.data.festivals.map((f) => (
+              <div class="text-center px-6 py-3 border border-[hsl(var(--laurel-gold))]/30 rounded-lg">
+                <p class="text-sm font-semibold text-laurel">{f.name}</p>
+                <p class="text-xs text-muted-foreground">
+                  {f.result?.replace('_', ' ').toUpperCase() || ''} {f.year}
+                </p>
+                {f.award && <p class="text-xs text-primary mt-1">{f.award}</p>}
+              </div>
+            ))}
+          </div>
+        )}
+
+        <!-- Synopsis -->
+        {film.data.synopsis && (
+          <Card>
+            <CardContent className="pt-6">
+              <h2 class="text-2xl font-bold mb-4">Synopsis</h2>
+              <p class="text-muted-foreground leading-relaxed" style="font-family: 'Inter', sans-serif;">
+                {film.data.synopsis}
+              </p>
+            </CardContent>
+          </Card>
+        )}
+
+        <!-- MDX Content (Director's Statement, BTS, etc.) -->
+        <div class="prose prose-invert prose-lg max-w-none" style="font-family: 'Inter', sans-serif;">
+          <Content />
+        </div>
+
+        <!-- Credits -->
+        {film.data.credits.length > 0 && (
+          <Card>
+            <CardContent className="pt-6">
+              <h2 class="text-2xl font-bold mb-4">Credits</h2>
+              <div class="grid sm:grid-cols-2 gap-3">
+                {film.data.credits.map((credit) => (
+                  <div class="flex justify-between text-sm py-2 border-b border-border/30 last:border-0">
+                    <span class="text-muted-foreground">{credit.role}</span>
+                    <span class="font-medium">{credit.name}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        <!-- Navigation -->
+        <div class="flex justify-between pt-8 border-t border-border/40">
+          <Button variant="outline">
+            <a href="/film">&larr; All Films</a>
+          </Button>
+          <Button>
+            <a href="/contact">Inquire About This Film</a>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </article>
+</PageLayout>

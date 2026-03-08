@@ -1,0 +1,33 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { Camera } from 'lucide-react';
+import { SITE_CONFIG } from '@/lib/constants';
+---
+
+<PageLayout title={`Photography — ${SITE_CONFIG.name}`} description="Photography portfolio of April Garnica — portraits, events, and visual storytelling.">
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto space-y-12">
+        <div class="text-center space-y-4">
+          <h1 class="text-4xl md:text-5xl font-bold">Photography</h1>
+          <p class="text-lg text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+            Portraits, events, and visual storytelling
+          </p>
+        </div>
+
+        <!-- Photo grid placeholder -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div class="aspect-square bg-card rounded-lg flex items-center justify-center border border-border/50 hover:border-primary/30 transition-colors">
+              <Camera className="h-10 w-10 text-muted-foreground/30" />
+            </div>
+          ))}
+        </div>
+
+        <p class="text-center text-muted-foreground" style="font-family: 'Inter', sans-serif;">
+          Photography portfolio coming soon. Replace placeholders with April's actual photographs.
+        </p>
+      </div>
+    </div>
+  </section>
+</PageLayout>
